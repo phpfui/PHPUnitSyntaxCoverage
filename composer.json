@@ -1,0 +1,27 @@
+{
+    "name": "phpfui/phpunit-syntax-coverage",
+    "description": "PHPUnit Testing extensions for complete syntax checking of all files and classes in your project",
+    "minimum-stability": "stable",
+    "keywords": ["PHPUnit","coverage","syntax","code","test","testing","validation", "code coverage"],
+    "homepage": "https://github.com/phpfui/PHPUnitSyntaxCoverage",
+    "license": "MIT",
+    "authors": [
+        {
+        "name": "Bruce Wells",
+        "email": "brucekwells@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1"
+    },
+    "require-dev": {
+			"nikic/php-parser": "^4.8",
+			"phpunit/phpunit": "^7.0|^8.0|>=9.0"
+    },
+    "autoload": {
+        "psr-0": {
+						"PHPFUI": "src/",
+						"badPHP": "tests/"
+				}
+    }
+}
