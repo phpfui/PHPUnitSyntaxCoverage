@@ -15,8 +15,8 @@ namespace PHPFUI\PHPUnitSyntaxCoverage;
 class ClassFinder extends \PhpParser\NodeVisitorAbstract
 	{
 
-	private array $classes = [];
-	private string $currentNamespace = '';
+	private $classes = [];
+	private $currentNamespace = '';
 
 	public function enterNode(\PhpParser\Node $node) : void
 		{
@@ -40,7 +40,7 @@ class ClassFinder extends \PhpParser\NodeVisitorAbstract
 class Extensions extends \PHPUnit\Framework\TestCase implements \PHPUnit\Runner\Hook
 	{
 
-	private static \PhpParser\Parser $parser;
+	private static $parser = null;
 
 	public static function setUpBeforeClass() : void
 		{
