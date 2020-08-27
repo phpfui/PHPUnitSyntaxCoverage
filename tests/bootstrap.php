@@ -1,13 +1,23 @@
 <?php
-
 error_reporting(E_ALL);
 
-$vendorDir = __DIR__ . '/../../vendor';
+function classNameExists(string $className) : string
+  {
+  $path = __DIR__ . "/{$className}.php";
+  $path = str_replace('\\', '/', $path);
+  return file_exists($path) ? $path : '';
+  }
 
-if (file_exists($file = $vendorDir . '/autoload.php')) {
-    require_once $file;
-} elseif (file_exists($file = './vendor/autoload.php')) {
-    require_once $file;
-} else {
-    throw new \RuntimeException('Composer autoload file not found');
-}
+function autoload($className) : void
+  {
+  $path = classNameExists($className);
+
+  if ($path)
+    {
+    /** @noinspection PhpIncludeInspection */
+    include $path;
+    }
+  }
+spl_autoload_register('autoload');
+
+require_once 'vendor/autoload.php';
