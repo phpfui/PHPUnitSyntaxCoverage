@@ -41,13 +41,19 @@ class Extensions extends \PHPUnit\Framework\TestCase implements \PHPUnit\Runner\
 	{
 
 	private static $parser = null;
+	private $skipDirectories = [];
 
 	public static function setUpBeforeClass() : void
 		{
 		$factory = new \PhpParser\ParserFactory();
-		self::$parser = $factory->create($_ENV['parser_type'] ?? \PhpParser\ParserFactory::PREFER_PHP7);
+		self::$parser = $factory->create($_ENV[__CLASS__ . '_parser_type'] ?? \PhpParser\ParserFactory::PREFER_PHP7);
 		}
 
+	/**
+	 * Assert a string containing valid PHP will parse.
+	 *
+	 * Important: Any classes defined in this code will not be seen by the autoloader, as it only exists in this string.
+	 */
 	public function assertValidPHP(string $code, string $message = '') : void
 		{
 		$this->assertNotEmpty($code, 'Empty PHP file. ' . $message);
@@ -83,7 +89,21 @@ class Extensions extends \PHPUnit\Framework\TestCase implements \PHPUnit\Runner\
 		}
 
 	/**
-	 * Validate all files in a directory.
+	 * Exclude any file with this $directory string in the path.
+	 *
+	 * Only a simple stripos is used to match anything in the file name.
+	 *
+	 * You can add multiple skips.
+	 */
+	public function addSkipDirectory(string $directory) : self
+		{
+		$this->skipDirectories[] = $directory;
+
+		return $this;
+		}
+
+	/**
+	 * Validate all files in a directory.  Recursive and only looks at .php files by default.
 	 */
 	public function assertValidPHPDirectory(string $directory, string $message = '', bool $recurseSubdirectories = true, array $extensions = ['.php']) : void
 		{
@@ -101,19 +121,34 @@ class Extensions extends \PHPUnit\Framework\TestCase implements \PHPUnit\Runner\
 
 		foreach ($iterator as $item)
 			{
-			if ('file' == $item->getType())
+			$type = $item->getType();
+			if ('file' == $type)
 				{
 				$file = $item->getPathname();
 				$ext = strrchr($file, '.');
-
 				if ($ext && isset($exts[$ext]))
 					{
-					$this->assertValidPHPFile($file, $message . "\nFile: " . $file);
+					$skip = false;
+					foreach ($this->skipDirectories as $directory)
+						{
+						if (stripos($file, $directory) !== false)
+							{
+							$skip = true;
+							break;
+							}
+						}
+					if (! $skip)
+						{
+						$this->assertValidPHPFile($file, $message . "\nFile: " . $file);
+						}
 					}
 				}
 			}
 		}
 
+	/**
+	 * Test a specific file
+	 */
 	public function assertValidPHPFile(string $fileName, string $message = '') : void
 		{
 		$this->assertFileExists($fileName, $message);

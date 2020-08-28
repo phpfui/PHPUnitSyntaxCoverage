@@ -4,13 +4,14 @@
 
 This package will checks for easy to miss syntax errors in all your PHP code. It will also check all your classes to see if they are loadable, but without actually instantiating the class.
 
-Often we accidently check in code with easily detectable syntax errors, but unless the file or class is actually loaded by PHP, we might not see the error. Often the file or class is syntaxically correct, but a method signature may not match an updated vendor library. Normally this would only be detectable at run time, but with PHPUnitSyntaxCoverage, you can make sure all files and classes are checked.
+Often we accidently check in code with easily detectable syntax errors, but unless the file or class is actually loaded by PHP, we might not see the error. Often the file or class is syntaxically correct, but a method signature may not match an updated class or vendor library. Normally this would only be detectable at run time, but with **PHPUnitSyntaxCoverage**, you can make sure all files and classes are checked.
 
 PHPUnitSyntaxCoverage uses [PhpParser](https://github.com/nikic/PHP-Parser) to check for basic syntax errors. It then uses [ReflectionClass](https://www.php.net/manual/en/class.reflectionclass.php) to load any classes that are found in the source without instantiating them.  This will find additional errors (such as missing or changed base classes from a package update).
 
 # Requirements
 - PHP 7.1 or higher
 - PHPUnit 7 or higher
+- Correctly configured autoloading
 
 ## Installation
 ```
@@ -22,8 +23,10 @@ Extend your unit tests from \PHPFUI\PHPUnitSyntaxCoverage\Extensions
 ```php
 class UnitTest extends \PHPFUI\PHPUnitSyntaxCoverage\Extensions
 	{
-	public function testValidPHP()
+	public function testProjectSyntax()
 		{
+		$this->addSkipDirectory(__DIR__ . '/../App/Examples');
+		$this->assertValidPHPDirectory(__DIR__ . '/../App', 'App directory has an error');
 		$this->assertValidPHPFile(__FILE__, 'Unit Test file not valid');
 		$this->assertValidPHP('<?php echo "hi";');
 		}
@@ -41,9 +44,27 @@ Instead of file by file testing, use **assertValidPHPDirectory** to test an enti
 ```
 The error message will include the offending file name and line number.
 
+Use **addSkipDirectory** to add simple case insensitive file matching to skip specific directories / files.
+
+## Autoloading
+You must make sure autoloading is correctly configured for all classes.  This means you can't pass references to classes that will not resolve correctly in your source. Use **addSkipDirectory** if you have test code that may not validate correctly.
+
+## PHP Version
+While this library only supports PHP 7.1 or higher, you can create a project and point it to PHP 5.2 or higher. The default is to prefer PHP 7 code, but to prefer or only parse PHP 5, configure phpunit.xml(.dist) with
+
+~~~xml
+	<php>
+		<env name="PHPFUI\PHPUnitSyntaxCoverage\Extensions_parser_type" value="X"/>
+	</php>
+~~~
+Where X is one of the following **numbers**:
+1. Prefer PHP 7
+2. Prefer PHP 5
+3. Only PHP 7
+4. Only PHP 5
+
 ## Examples
 See [examples](https://github.com/phpfui/PHPUnitSyntaxCoverage/blob/master/tests/UnitTest.php)
 
 ## Documentation
-
 Full documentation at [PHPFUI\PHPUnitSyntaxCoverage](http://phpfui.com/?p=d&n=PHPFUI%5CPHPUnitSyntaxCoverage)
