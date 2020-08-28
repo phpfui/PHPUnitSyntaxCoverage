@@ -1,4 +1,4 @@
-# PHPUnitSyntaxCoverage [![Build Status](https://travis-ci.org/phpfui/PHPUnitSyntaxCoverage.png?branch=master)](https://travis-ci.org/phpfui/PHPUnitSyntaxCoverage) [![Latest Packagist release](https://img.shields.io/packagist/v/phpfui/PHPUnitSyntaxCoverage.svg)](https://packagist.org/packages/phpfui/PHPUnitSyntaxCoverage)
+# PHPUnitSyntaxCoverage [![Latest Packagist release](https://img.shields.io/packagist/v/phpfui/phpunit-syntax-coverage.svg)](https://packagist.org/packages/phpfui/phpunit-syntax-coverage)
 
 ## PHPUnit Extension for complete PHP Syntax Code Coverage
 
