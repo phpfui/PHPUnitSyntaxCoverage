@@ -14,11 +14,15 @@
     "require": {
       "php": ">=7.1",
 			"nikic/php-parser": "^4.8",
-			"phpunit/phpunit": ">=7.0"
+			"phpunit/phpunit": ">=7.0",
+        "roave/you-are-using-it-wrong": "^1.8"
     },
     "autoload": {
         "psr-0": {
 						"PHPFUI": "src/"
 				}
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
     }
 }
