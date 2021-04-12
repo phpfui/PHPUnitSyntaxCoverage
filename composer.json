@@ -12,10 +12,8 @@
         }
     ],
     "require": {
-      "php": ">=7.1",
-			"nikic/php-parser": "^4.8",
-			"phpunit/phpunit": ">=7.0",
-        "roave/you-are-using-it-wrong": "^1.8"
+      "php": ">=7.3",
+			"nikic/php-parser": ">=4.10"
     },
     "autoload": {
         "psr-0": {
@@ -23,6 +21,10 @@
 				}
     },
     "require-dev": {
-        "roave/security-advisories": "dev-latest"
+				"phpunit/phpunit": ">=9.0",
+        "roave/security-advisories": "dev-latest",
+        "vimeo/psalm": "^4.7",
+        "friendsofphp/php-cs-fixer": "^2.18",
+        "symfony/translation-contracts": "^2.3"
     }
 }

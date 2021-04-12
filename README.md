@@ -49,6 +49,9 @@ Use **addSkipDirectory** to add simple case insensitive file matching to skip sp
 ## Autoloading
 You must make sure autoloading is correctly configured for all classes.  This means you can't pass references to classes that will not resolve correctly in your source. Use **addSkipDirectory** if you have test code that may not validate correctly.
 
+## Namespace Testing
+The **assertValidPHPFile** and **assertValidPHPDirectory** asserts will test for the proper namespace in the file path (for PSR-0 autoloading and fully pathed PSR-4 autoloading), but you can turn off namespace testing with **skipNamespaceTesting** or exclude a specific namespace tests with **addSkipNamespace**.
+
 ## PHP Version
 While this library only supports PHP 7.1 or higher, you can create a project and point it to PHP 5.2 or higher. The default is to prefer PHP 7 code, but to prefer or only parse PHP 5, configure phpunit.xml(.dist) with
 

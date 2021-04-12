@@ -11,7 +11,6 @@
  */
 class UnitTest extends \PHPFUI\PHPUnitSyntaxCoverage\Extensions
 	{
-
 	public function testDirectory() : void
 		{
 		$this->assertValidPHPDirectory(__DIR__, 'Test directory is not valid', false);
@@ -46,7 +45,12 @@ class UnitTest extends \PHPFUI\PHPUnitSyntaxCoverage\Extensions
 
 	public function testVendorDirectory() : void
 		{
+		$this->skipNamespaceTesting();
+		// Sloppy coding from various packages causes us to have to skip directories.  If only they used PHPUnitSyntaxCoverage they would have detected these issues!
+		$this->addSkipDirectory('package-versions-deprecated');	// phpunit
+		$this->addSkipDirectory('php-cs-fixer');
+		$this->addSkipDirectory('DependencyInjection'); // Symfony\Component\DependencyInjection
+		$this->addSkipDirectory('path-util');	// Webmozart\PathUtil
 		$this->assertValidPHPDirectory(__DIR__ . '/../vendor', 'Vendor directory is not valid');
 		}
-
 	}

@@ -1,11 +1,15 @@
 <?php
-error_reporting(E_ALL);
+
+\error_reporting(E_ALL);
+
+\ini_set('memory_limit', '-1');
 
 function classNameExists(string $className) : string
   {
   $path = __DIR__ . "/{$className}.php";
-  $path = str_replace('\\', '/', $path);
-  return file_exists($path) ? $path : '';
+  $path = \str_replace('\\', '/', $path);
+
+  return \file_exists($path) ? $path : '';
   }
 
 function autoload($className) : void
@@ -13,11 +17,11 @@ function autoload($className) : void
   $path = classNameExists($className);
 
   if ($path)
-    {
-    /** @noinspection PhpIncludeInspection */
-    include $path;
-    }
+	{
+	/** @noinspection PhpIncludeInspection */
+	include $path;
+	}
   }
-spl_autoload_register('autoload');
+\spl_autoload_register('autoload');
 
 require_once 'vendor/autoload.php';
