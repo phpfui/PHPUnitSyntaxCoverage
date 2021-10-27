@@ -14,7 +14,7 @@ function classNameExists(string $className) : string
 
 function autoload($className) : void
   {
-  $path = classNameExists($className);
+  $path = \classNameExists($className);
 
   if ($path)
 	{

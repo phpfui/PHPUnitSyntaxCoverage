@@ -154,8 +154,9 @@ class Extensions extends \PHPUnit\Framework\TestCase implements \PHPUnit\Runner\
 		if ($recurseSubdirectories)
 			{
 			$iterator = new \RecursiveIteratorIterator(
-					new \RecursiveDirectoryIterator($directory, \RecursiveDirectoryIterator::SKIP_DOTS),
-					\RecursiveIteratorIterator::SELF_FIRST);
+				new \RecursiveDirectoryIterator($directory, \RecursiveDirectoryIterator::SKIP_DOTS),
+				\RecursiveIteratorIterator::SELF_FIRST
+			);
 			}
 		else
 			{
@@ -211,6 +212,7 @@ class Extensions extends \PHPUnit\Framework\TestCase implements \PHPUnit\Runner\
 		if (! $this->skipNamespaceTest)
 			{
 			$namespace = $this->classFinder->getNamespace();
+
 			if (! \in_array($namespace, $this->skipNamespaces))
 				{
 				// assert namespace is correct

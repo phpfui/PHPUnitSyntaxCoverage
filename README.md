@@ -1,4 +1,4 @@
-# PHPUnitSyntaxCoverage [![Build Status](https://api.travis-ci.com/phpfui/PHPUnitSyntaxCoverage.svg?branch=master)](https://travis-ci.com/github/phpfui/PHPUnitSyntaxCoverage) [![Latest Packagist release](https://img.shields.io/packagist/v/phpfui/phpunit-syntax-coverage.svg)](https://packagist.org/packages/phpfui/phpunit-syntax-coverage)
+# PHPUnitSyntaxCoverage [![Tests](https://github.com/phpfui/PHPUnitSyntaxCoverage/actions/workflows/tests.yml/badge.svg)](https://github.com/phpfui/PHPUnitSyntaxCoverage/actions?query=workflow%3Atests) [![Latest Packagist release](https://img.shields.io/packagist/v/phpfui/phpunit-syntax-coverage.svg)](https://packagist.org/packages/phpfui/phpunit-syntax-coverage)
 
 ## PHPUnit Extension for complete PHP Syntax Code Coverage
 
@@ -9,8 +9,7 @@ Often we accidently check in code with easily detectable syntax errors, but unle
 PHPUnitSyntaxCoverage uses [PhpParser](https://github.com/nikic/PHP-Parser) to check for basic syntax errors. It then uses [ReflectionClass](https://www.php.net/manual/en/class.reflectionclass.php) to load any classes that are found in the source without instantiating them.  This will find additional errors (such as missing or changed base classes from a package update).
 
 # Requirements
-- PHP 7.1 or higher
-- PHPUnit 7 or higher
+- Modern versions of PHP and PHPUnit
 - Correctly configured autoloading
 
 ## Installation
@@ -70,4 +69,8 @@ Where X is one of the following **numbers**:
 See [examples](https://github.com/phpfui/PHPUnitSyntaxCoverage/blob/master/tests/UnitTest.php)
 
 ## Documentation
-Full documentation at [PHPFUI\PHPUnitSyntaxCoverage](http://phpfui.com/?p=d&n=PHPFUI%5CPHPUnitSyntaxCoverage)
+Via [PHPFUI/InstaDoc](http://phpfui.com/?n=PHPFUI\PHPUnitSyntaxCoverage)
+
+## License
+PHPFUI is distributed under the MIT License.
+
