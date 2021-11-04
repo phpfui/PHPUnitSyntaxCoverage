@@ -16,9 +16,7 @@
         "nikic/php-parser": "^4.13"
     },
     "autoload": {
-        "psr-0": {
-						"PHPFUI": "src/"
-				}
+        "psr-4": {"PHPFUI\\PHPUnitSyntaxCoverage\\": "src/PHPFUI/PHPUnitSyntaxCoverage/"}
     },
     "require-dev": {
 				"phpunit/phpunit": ">=8.0",
