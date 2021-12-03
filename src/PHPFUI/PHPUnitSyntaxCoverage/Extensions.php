@@ -14,9 +14,9 @@ namespace PHPFUI\PHPUnitSyntaxCoverage;
 
 class ClassFinder extends \PhpParser\NodeVisitorAbstract
 	{
-	private $classes = [];
+	private array $classes = [];
 
-	private $currentNamespace = '';
+	private string $currentNamespace = '';
 
 	public function enterNode(\PhpParser\Node $node) : void
 		{
@@ -45,11 +45,11 @@ class Extensions extends \PHPUnit\Framework\TestCase implements \PHPUnit\Runner\
 	{
 	private static $parser = null;
 
-	private $skipDirectories = [];
+	private array $skipDirectories = [];
 
-	private $skipNamespaces = [];
+	private array $skipNamespaces = [];
 
-	private $skipNamespaceTest = false;
+	private bool $skipNamespaceTest = false;
 
 	private $traverser;
 
@@ -64,7 +64,7 @@ class Extensions extends \PHPUnit\Framework\TestCase implements \PHPUnit\Runner\
   protected function setUp() : void
 		{
 		$this->traverser = new \PhpParser\NodeTraverser();
-		$this->classFinder = new ClassFinder();
+		$this->classFinder = new \PHPFUI\PHPUnitSyntaxCoverage\ClassFinder();
 		}
 
 	protected function tearDown() : void
@@ -88,7 +88,7 @@ class Extensions extends \PHPUnit\Framework\TestCase implements \PHPUnit\Runner\
 			}
 		catch (\Throwable $e)
 			{
-			throw new Exception($message . "\n" . $e->getMessage());
+			throw new \PHPFUI\PHPUnitSyntaxCoverage\Exception($message . "\n" . $e->getMessage());
 			}
 
 		$this->assertNotEmpty($ast, 'Empty Abstract Syntax tree. ' . $message);
@@ -105,7 +105,7 @@ class Extensions extends \PHPUnit\Framework\TestCase implements \PHPUnit\Runner\
 				}
 			catch (\Throwable $e)
 				{
-				throw new Exception($message . "\n" . $e->getMessage());
+				throw new \PHPFUI\PHPUnitSyntaxCoverage\Exception($message . "\n" . $e->getMessage());
 				}
 			}
 		}
