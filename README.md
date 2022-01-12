@@ -68,8 +68,8 @@ Where X is one of the following **numbers**:
 ## Examples
 See [examples](https://github.com/phpfui/PHPUnitSyntaxCoverage/blob/master/tests/UnitTest.php)
 
-## Documentation
-Via [PHPFUI/InstaDoc](http://phpfui.com/?n=PHPFUI\PHPUnitSyntaxCoverage)
+## Full Class Documentation
+[PHPFUI/InstaDoc](http://phpfui.com/?n=PHPFUI\PHPUnitSyntaxCoverage)
 
 ## License
 PHPFUI is distributed under the MIT License.
