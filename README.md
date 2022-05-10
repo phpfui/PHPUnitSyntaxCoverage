@@ -52,8 +52,7 @@ You must make sure autoloading is correctly configured for all classes.  This me
 The **assertValidPHPFile** and **assertValidPHPDirectory** asserts will test for the proper namespace in the file path (for PSR-0 autoloading and fully pathed PSR-4 autoloading), but you can turn off namespace testing with **skipNamespaceTesting** or exclude a specific namespace tests with **addSkipNamespace**.
 
 ## PHP Version
-While this library only supports PHP 7.4 and higher, you can create a project and point it to PHP 5.2 or higher. The default is to prefer PHP 7 code, but to prefer or only parse PHP 5, configure phpunit.xml(.dist) with
-
+While this library only supports currently supported versions of PHP, you can create a project and point it to PHP 5.2 or higher. The default is to prefer PHP 7 code, but to prefer or only parse PHP 5, configure phpunit.xml(.dist) with
 ~~~xml
 	<php>
 		<env name="PHPFUI\PHPUnitSyntaxCoverage\Extensions_parser_type" value="X"/>
