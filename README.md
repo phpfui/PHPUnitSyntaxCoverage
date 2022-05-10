@@ -69,7 +69,7 @@ Where X is one of the following **numbers**:
 See [examples](https://github.com/phpfui/PHPUnitSyntaxCoverage/blob/master/tests/UnitTest.php)
 
 ## Full Class Documentation
-[PHPFUI/InstaDoc](http://phpfui.com/?n=PHPFUI\PHPUnitSyntaxCoverage)
+[PHPFUI/InstaDoc](http://phpfui.com/?n=PHPFUI/PHPUnitSyntaxCoverage)
 
 ## License
 PHPFUI is distributed under the MIT License.

@@ -12,38 +12,9 @@
 
 namespace PHPFUI\PHPUnitSyntaxCoverage;
 
-class ClassFinder extends \PhpParser\NodeVisitorAbstract
-	{
-	private array $classes = [];
-
-	private string $currentNamespace = '';
-
-	public function enterNode(\PhpParser\Node $node) : void
-		{
-		if ($node instanceof \PhpParser\Node\Stmt\Namespace_)
-			{
-			$this->currentNamespace = \implode('\\', $node->name->parts);
-			}
-		elseif ($node instanceof \PhpParser\Node\Stmt\Class_ && $node->name)
-			{
-			$this->classes[] = $this->currentNamespace ? $this->currentNamespace . '\\' . $node->name->name : $node->name->name;
-			}
-		}
-
-	public function getNamespace() : string
-		{
-		return $this->currentNamespace;
-		}
-
-	public function getClasses() : array
-		{
-		return $this->classes;
-		}
-	}
-
 class Extensions extends \PHPUnit\Framework\TestCase implements \PHPUnit\Runner\Hook
 	{
-	private static $parser = null;
+	private static \PhpParser\Parser $parser;
 
 	private array $skipDirectories = [];
 
@@ -51,9 +22,9 @@ class Extensions extends \PHPUnit\Framework\TestCase implements \PHPUnit\Runner\
 
 	private bool $skipNamespaceTest = false;
 
-	private $traverser;
+	private ?\PhpParser\NodeTraverser $traverser = null;
 
-	private $classFinder;
+	private ?\PHPFUI\PHPUnitSyntaxCoverage\ClassFinder $classFinder = null;
 
 	public static function setUpBeforeClass() : void
 		{
