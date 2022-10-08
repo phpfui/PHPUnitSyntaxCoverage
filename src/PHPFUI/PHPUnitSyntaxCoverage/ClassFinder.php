@@ -18,7 +18,7 @@ class ClassFinder extends \PhpParser\NodeVisitorAbstract
 
 	private string $currentNamespace = '';
 
-	public function enterNode(\PhpParser\Node $node) : void
+	public function enterNode(int|\PhpParser\Node|null $node)
 		{
 		if ($node instanceof \PhpParser\Node\Stmt\Namespace_)
 			{
@@ -28,6 +28,8 @@ class ClassFinder extends \PhpParser\NodeVisitorAbstract
 			{
 			$this->classes[] = $this->currentNamespace ? $this->currentNamespace . '\\' . $node->name->name : $node->name->name;
 			}
+
+		return $node;
 		}
 
 	public function getNamespace() : string

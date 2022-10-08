@@ -1,4 +1,4 @@
-# PHPUnitSyntaxCoverage [![Tests](https://github.com/phpfui/PHPUnitSyntaxCoverage/actions/workflows/tests.yml/badge.svg)](https://github.com/phpfui/PHPUnitSyntaxCoverage/actions?query=workflow%3Atests) [![Latest Packagist release](https://img.shields.io/packagist/v/phpfui/phpunit-syntax-coverage.svg)](https://packagist.org/packages/phpfui/phpunit-syntax-coverage)
+# PHPUnitSyntaxCoverage [![Tests](https://github.com/phpfui/PHPUnitSyntaxCoverage/actions/workflows/tests.yml/badge.svg)](https://github.com/phpfui/PHPUnitSyntaxCoverage/actions?query=workflow%3Atests) [![Latest Packagist release](https://img.shields.io/packagist/v/phpfui/phpunit-syntax-coverage.svg)](https://packagist.org/packages/phpfui/phpunit-syntax-coverage) ![](https://img.shields.io/badge/PHPStan-level%206-brightgreen.svg?style=flat)
 
 ## PHPUnit Extension for complete PHP Syntax Code Coverage
 
