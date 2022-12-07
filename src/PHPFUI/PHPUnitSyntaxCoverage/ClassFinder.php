@@ -14,6 +14,9 @@ namespace PHPFUI\PHPUnitSyntaxCoverage;
 
 class ClassFinder extends \PhpParser\NodeVisitorAbstract
 	{
+	/**
+	 * @var array<string> $classes
+	 */
 	private array $classes = [];
 
 	private string $currentNamespace = '';
@@ -37,6 +40,9 @@ class ClassFinder extends \PhpParser\NodeVisitorAbstract
 		return $this->currentNamespace;
 		}
 
+	/**
+	 * @return array<string>
+	 */
 	public function getClasses() : array
 		{
 		return $this->classes;

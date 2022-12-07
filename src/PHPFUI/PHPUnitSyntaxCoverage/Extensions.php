@@ -16,8 +16,14 @@ class Extensions extends \PHPUnit\Framework\TestCase implements \PHPUnit\Runner\
 	{
 	private static \PhpParser\Parser $parser;
 
+	/**
+	 * @var array<string> $skipDirectories
+	 */
 	private array $skipDirectories = [];
 
+	/**
+	 * @var array<string> $skipNamespaces
+	 */
 	private array $skipNamespaces = [];
 
 	private bool $skipNamespaceTest = false;
@@ -119,6 +125,8 @@ class Extensions extends \PHPUnit\Framework\TestCase implements \PHPUnit\Runner\
 
 	/**
 	 * Validate all files in a directory.  Recursive and only looks at .php files by default.
+	 *
+	 * @param array<string> $extensions to test
 	 */
 	public function assertValidPHPDirectory(string $directory, string $message = '', bool $recurseSubdirectories = true, array $extensions = ['.php']) : void
 		{
