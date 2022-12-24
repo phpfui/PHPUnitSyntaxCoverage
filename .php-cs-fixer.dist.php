@@ -6,7 +6,7 @@
  *
  */
 
-$config = include '../phpfui/PhpCsFixer.php';
+$config = include 'PhpCsFixer.php';
 
 return $config->setFinder(PhpCsFixer\Finder::create()
 			->exclude('vendor')
