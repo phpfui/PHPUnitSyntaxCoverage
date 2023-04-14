@@ -12,7 +12,7 @@
 
 namespace PHPFUI\PHPUnitSyntaxCoverage;
 
-class Extensions extends \PHPUnit\Framework\TestCase implements \PHPUnit\Runner\Hook
+class Extensions extends \PHPUnit\Framework\TestCase
 	{
 	private static \PhpParser\Parser $parser;
 
@@ -82,7 +82,7 @@ class Extensions extends \PHPUnit\Framework\TestCase implements \PHPUnit\Runner\
 				}
 			catch (\Throwable $e)
 				{
-				throw new \PHPFUI\PHPUnitSyntaxCoverage\Exception($message . "\n" . $e->getMessage());
+				throw new \PHPFUI\PHPUnitSyntaxCoverage\Exception($message . "\n" . $e->getMessage() . ": ReflectionClass({$class}) failed to load");
 				}
 			}
 		}
@@ -182,11 +182,11 @@ class Extensions extends \PHPUnit\Framework\TestCase implements \PHPUnit\Runner\
 	 */
 	public function assertValidPHPFile(string $fileName, string $message = '') : void
 		{
-		$this->assertFileExists($fileName, $message);
+		$this->assertFileExists($fileName, $message . ': File does not exist');
 
 		$code = \file_get_contents($fileName);
 
-		$this->assertValidPHP($code, $message);
+		$this->assertValidPHP($code, $message . ': Not valid PHP code');
 
 		if (! $this->skipNamespaceTest)
 			{

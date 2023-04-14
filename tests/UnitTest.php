@@ -17,15 +17,15 @@ class UnitTest extends \PHPFUI\PHPUnitSyntaxCoverage\Extensions
 		$this->assertValidPHPDirectory(__DIR__ . '/../src', 'src directory is not valid');
 
 		$this->expectException(\PHPFUI\PHPUnitSyntaxCoverage\Exception::class);
-		$this->assertValidPHPDirectory(__DIR__ . '/badPHP', 'badPHP directory is valid (should not be)');
+		$this->assertValidPHPDirectory(__DIR__ . '/fixtures/badPHP', 'badPHP directory is valid (should not be)');
 		}
 
 	public function testInvalidExtendedClassFile() : void
 		{
-		$file = __DIR__ . '/badPHP/BaseClass.php';
+		$file = __DIR__ . '/fixtures/badPHP/BaseClass.php';
 		$this->assertValidPHPFile($file, $file . ' is invalid');
 
-		$file = __DIR__ . '/badPHP/BadClass.php';
+		$file = __DIR__ . '/fixtures/badPHP/BadClass.php';
 		$this->expectException(\PHPFUI\PHPUnitSyntaxCoverage\Exception::class);
 		$this->assertValidPHPFile($file, $file . ' is valid (should not be)');
 		}
@@ -47,10 +47,7 @@ class UnitTest extends \PHPFUI\PHPUnitSyntaxCoverage\Extensions
 		{
 		$this->skipNamespaceTesting();
 		// Sloppy coding from various packages causes us to have to skip directories.  If only they used PHPUnitSyntaxCoverage they would have detected these issues!
-		$this->addSkipDirectory('package-versions-deprecated');	// phpunit
-		$this->addSkipDirectory('php-cs-fixer');
 		$this->addSkipDirectory('DependencyInjection'); // Symfony\Component\DependencyInjection
-		$this->addSkipDirectory('path-util');	// Webmozart\PathUtil
 		$this->assertValidPHPDirectory(__DIR__ . '/../vendor', 'Vendor directory is not valid');
 		}
 	}
