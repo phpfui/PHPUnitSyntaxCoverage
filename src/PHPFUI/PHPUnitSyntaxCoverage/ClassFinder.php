@@ -35,16 +35,16 @@ class ClassFinder extends \PhpParser\NodeVisitorAbstract
 		return $node;
 		}
 
-	public function getNamespace() : string
-		{
-		return $this->currentNamespace;
-		}
-
 	/**
 	 * @return array<string>
 	 */
 	public function getClasses() : array
 		{
 		return $this->classes;
+		}
+
+	public function getNamespace() : string
+		{
+		return $this->currentNamespace;
 		}
 	}

@@ -192,7 +192,7 @@ return $config
         // There should not be space before or after object operators `->` and `?->`.
         'object_operator_without_whitespace' => true,
         // Orders the elements of classes/interfaces/traits.
-        'ordered_class_elements' => ['order'=>['use_trait','constant_public','constant_protected','constant_private','property_public','property_protected','property_private','construct','destruct','magic','phpunit','method_public','method_protected','method_private']],
+        'ordered_class_elements' => ['sort_algorithm' => 'alpha'],
         // Ordering `use` statements.
         'ordered_imports' => true,
         // Orders the interfaces in an `implements` or `interface extends` clause.

@@ -14,6 +14,8 @@ namespace PHPFUI\PHPUnitSyntaxCoverage;
 
 class Extensions extends \PHPUnit\Framework\TestCase
 	{
+	private ?\PHPFUI\PHPUnitSyntaxCoverage\ClassFinder $classFinder = null;
+
 	private static \PhpParser\Parser $parser;
 
 	/**
@@ -29,8 +31,6 @@ class Extensions extends \PHPUnit\Framework\TestCase
 	private bool $skipNamespaceTest = false;
 
 	private ?\PhpParser\NodeTraverser $traverser = null;
-
-	private ?\PHPFUI\PHPUnitSyntaxCoverage\ClassFinder $classFinder = null;
 
 	public static function setUpBeforeClass() : void
 		{
@@ -48,6 +48,32 @@ class Extensions extends \PHPUnit\Framework\TestCase
 		{
 		$this->traverser = null;
 		$this->classFinder = null;
+		}
+
+	/**
+	 * Exclude any file with this $directory string in the path.
+	 *
+	 * Only a simple stripos is used to match anything in the file name.
+	 *
+	 * You can add multiple skips.
+	 */
+	public function addSkipDirectory(string $directory) : self
+		{
+		$this->skipDirectories[] = $directory;
+
+		return $this;
+		}
+
+	/**
+	 * Exclude namespace from namespace testing
+	 *
+	 * You can add multiple namespaces to skip.
+	 */
+	public function addSkipNamespace(string $namespace) : self
+		{
+		$this->skipNamespaces[] = $namespace;
+
+		return $this;
 		}
 
 	/**
@@ -85,42 +111,6 @@ class Extensions extends \PHPUnit\Framework\TestCase
 				throw new \PHPFUI\PHPUnitSyntaxCoverage\Exception($message . "\n" . $e->getMessage() . ": ReflectionClass({$class}) failed to load");
 				}
 			}
-		}
-
-	/**
-	 * Exclude any file with this $directory string in the path.
-	 *
-	 * Only a simple stripos is used to match anything in the file name.
-	 *
-	 * You can add multiple skips.
-	 */
-	public function addSkipDirectory(string $directory) : self
-		{
-		$this->skipDirectories[] = $directory;
-
-		return $this;
-		}
-
-	/**
-	 * Skip namespace testing
-	 */
-	public function skipNamespaceTesting() : self
-		{
-		$this->skipNamespaceTest = true;
-
-		return $this;
-		}
-
-	/**
-	 * Exclude namespace from namespace testing
-	 *
-	 * You can add multiple namespaces to skip.
-	 */
-	public function addSkipNamespace(string $namespace) : self
-		{
-		$this->skipNamespaces[] = $namespace;
-
-		return $this;
 		}
 
 	/**
@@ -199,5 +189,15 @@ class Extensions extends \PHPUnit\Framework\TestCase
 				$this->assertStringContainsString($namespace . '\\', $fileName, "Namespace {$namespace} not found in file path {$fileName}");
 				}
 			}
+		}
+
+	/**
+	 * Skip namespace testing
+	 */
+	public function skipNamespaceTesting() : self
+		{
+		$this->skipNamespaceTest = true;
+
+		return $this;
 		}
 	}
