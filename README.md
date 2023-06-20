@@ -21,15 +21,15 @@ composer require phpfui/phpunit-syntax-coverage
 Extend your unit tests from \PHPFUI\PHPUnitSyntaxCoverage\Extensions
 ```php
 class UnitTest extends \PHPFUI\PHPUnitSyntaxCoverage\Extensions
-	{
-	public function testProjectSyntax()
-		{
-		$this->addSkipDirectory(__DIR__ . '/../App/Examples');
-		$this->assertValidPHPDirectory(__DIR__ . '/../App', 'App directory has an error');
-		$this->assertValidPHPFile(__FILE__, 'Unit Test file not valid');
-		$this->assertValidPHP('<?php echo "hi";');
-		}
-	}
+  {
+  public function testProjectSyntax()
+    {
+    $this->addSkipDirectory(__DIR__ . '/../App/Examples');
+    $this->assertValidPHPDirectory(__DIR__ . '/../App', 'App directory has an error');
+    $this->assertValidPHPFile(__FILE__, 'Unit Test file not valid');
+    $this->assertValidPHP('<?php echo "hi";');
+    }
+  }
 ```
 You can use any of the following asserts:
 - assertValidPHP(string $code, string $message = '')
@@ -39,7 +39,7 @@ You can use any of the following asserts:
 ## Directory Testing
 Instead of file by file testing, use **assertValidPHPDirectory** to test an entire directory. Any files added to the directory will be automatically tested.
 ```php
-	$this->assertValidPHPDirectory(__DIR__ . '/../App', 'App directory error');
+  $this->assertValidPHPDirectory(__DIR__ . '/../App', 'App directory error');
 ```
 The error message will include the offending file name and line number.
 
