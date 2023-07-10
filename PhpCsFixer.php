@@ -70,7 +70,7 @@ return $config
         // Replace core functions calls returning constants with the constants.
         'function_to_constant' => true,
         // Ensure single space between function's argument and its typehint.
-        'function_typehint_space' => true,
+        'type_declaration_spaces' => true,
         // Renames PHPDoc tags.
         'general_phpdoc_tag_rename' => true,
         // Function `implode` must be called with 2 arguments in the documented order.
