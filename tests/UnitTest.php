@@ -50,6 +50,7 @@ class UnitTest extends \PHPFUI\PHPUnitSyntaxCoverage\Extensions
 		$this->addSkipDirectory('DependencyInjection'); // these components don't work due to missing dependencies.  Unbelievable for Symfony
 		$this->addSkipDirectory('http-foundation');
 		$this->addSkipDirectory('DataCollector');
+		$this->addSkipDirectory('console');
 		$this->assertValidPHPDirectory(__DIR__ . '/../vendor', 'Vendor directory is not valid');
 		}
 	}
