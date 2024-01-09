@@ -25,7 +25,7 @@ class ClassFinder extends \PhpParser\NodeVisitorAbstract
 		{
 		if ($node instanceof \PhpParser\Node\Stmt\Namespace_)
 			{
-			$this->currentNamespace = \implode('\\', $node->name->parts);
+			$this->currentNamespace = $node->name->name;
 			}
 		elseif ($node instanceof \PhpParser\Node\Stmt\Class_ && $node->name)
 			{

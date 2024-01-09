@@ -35,7 +35,7 @@ class Extensions extends \PHPUnit\Framework\TestCase
 	public static function setUpBeforeClass() : void
 		{
 		$factory = new \PhpParser\ParserFactory();
-		self::$parser = $factory->create($_ENV[self::class . '_parser_type'] ?? \PhpParser\ParserFactory::PREFER_PHP7);
+		self::$parser = $factory->createForHostVersion();
 		}
 
   protected function setUp() : void
