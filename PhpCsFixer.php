@@ -3,6 +3,7 @@
 $config = new PhpCsFixer\Config();
 
 return $config
+    ->setParallelConfig(new PhpCsFixer\Runner\Parallel\ParallelConfig(4, 20))
     ->setRiskyAllowed(true)
     ->setIndent("\t")
     ->setLineEnding("\r\n")

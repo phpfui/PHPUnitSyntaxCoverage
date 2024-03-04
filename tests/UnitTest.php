@@ -48,9 +48,8 @@ class UnitTest extends \PHPFUI\PHPUnitSyntaxCoverage\Extensions
 		$this->skipNamespaceTesting();
 		// Sloppy coding from various packages causes us to have to skip directories.  If only they used PHPUnitSyntaxCoverage they would have detected these issues!
 		$this->addSkipDirectory('DependencyInjection'); // these components don't work due to missing dependencies.  Unbelievable for Symfony
-		$this->addSkipDirectory('http-foundation');
-		$this->addSkipDirectory('DataCollector');
 		$this->addSkipDirectory('console');
+		$this->addSkipDirectory('php-cs-fixer.d');
 		$this->assertValidPHPDirectory(__DIR__ . '/../vendor', 'Vendor directory is not valid');
 		}
 	}
