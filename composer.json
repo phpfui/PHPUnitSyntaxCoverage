@@ -14,8 +14,11 @@
     "require": {
         "php": ">=8.0 <8.4"
     },
+    "autoload": {
+        "psr-4": {"PHPFUI\\PHPUnitSyntaxCoverage\\": "src/PHPFUI/PHPUnitSyntaxCoverage/"}
+    },
     "autoload-dev": {
-        "psr-4": {"PHPFUI\\PHPUnitSyntaxCoverage\\": "src/PHPFUI/PHPUnitSyntaxCoverage/", "badPHP\\": "tests/"}
+        "psr-4": {"badPHP\\": "tests/"}
     },
     "require-dev": {
         "nikic/php-parser": "^5.0",
