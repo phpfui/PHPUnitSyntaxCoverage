@@ -2,7 +2,7 @@
 
 <phpunit backupGlobals="false"
 				colors="true"
-				stopOnDeprecation="true"
+				displayDetailsOnTestsThatTriggerDeprecations="true"
 				processIsolation="false"
 				stopOnFailure="false"
 				bootstrap="./tests/bootstrap.php"
