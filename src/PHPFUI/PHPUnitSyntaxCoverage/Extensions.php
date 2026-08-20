@@ -59,7 +59,7 @@ class Extensions extends \PHPUnit\Framework\TestCase
 	 */
 	public function addSkipDirectory(string $directory) : self
 		{
-		$this->skipDirectories[] = $directory;
+		$this->skipDirectories[] = str_replace('\\', '/', $directory);
 
 		return $this;
 		}
@@ -139,7 +139,7 @@ class Extensions extends \PHPUnit\Framework\TestCase
 
 			if ('file' == $type)
 				{
-				$file = $item->getPathname();
+				$file = str_replace('\\', '/', $item->getPathname());
 				$ext = \strrchr($file, '.');
 
 				if ($ext && isset($exts[$ext]))
