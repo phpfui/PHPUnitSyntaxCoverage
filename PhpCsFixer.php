@@ -7,6 +7,7 @@ return $config
     ->setRiskyAllowed(true)
     ->setIndent("\t")
     ->setLineEnding("\r\n")
+    ->setUnsupportedPhpVersionAllowed(true)
     ->setRules([
         // Each line of multi-line DocComments must have an asterisk [PSR-5] and must be aligned with the first one.
         'align_multiline_comment' => ['comment_type'=>'all_multiline'],
